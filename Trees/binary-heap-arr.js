@@ -24,19 +24,21 @@ class Heap {
         return this;
     }
     extractMax() {
-        // removes and returns the el on top
-        const extracted = this._heap[0];
+        // swaps first with last el
+        // pop last(former first)
         const len = this.getLength();
-        this._heap[0] = this._heap[len - 1];
-        this._heap[len - 1] = null;
+        [this._heap[0], this._heap[len - 1]] =
+        [this._heap[len - 1], this._heap[0]];
+        const extracted = this._heap.pop();
         let curr = this._heap[0];
         let i = 0;
         while (2*i+1 < len && 2*i+2 < len) {
-            // checks if children are bigger
-            // swaps biggest with the el on top
+            // loop runs if the indicies are within the heap
+            // checks if at least one child is bigger
+            // swaps biggest with the swaps biggest with parent
             // and keep swapping until it find its place in the tree
             if (curr < this._heap[2*i+1] || curr < this._heap[2*i+2]) {
-                if (this._heap[2*i+1] < this._heap[2*i+2]) {
+                if (this._heap[2*i+1] <= this._heap[2*i+2]) {
                     [this._heap[i], this._heap[2*i+2]] =
                     [this._heap[2*i+2], this._heap[i]];
                     curr = this._heap[2*i+2];
