@@ -13,8 +13,8 @@ class Heap {
             while (currI > 0) {
                 // backtrack up the tree to the parent
                 // and swap if smaller
-                const parentI = (currI - 0.5) | 0;
-                if (this._heap[parentI] < this._heap[currI]) {
+                const parentI = (currI - 0.5)/2 | 0;
+                if (this._heap[parentI] > this._heap[currI]) {
                     [this._heap[currI], this._heap[parentI]]
                     = [this._heap[parentI], this._heap[currI]];
                     currI = parentI;
@@ -59,7 +59,17 @@ class Heap {
 }
 
 const myHeap = new Heap();
-myHeap.pushToHeap(5).pushToHeap(77).pushToHeap(25).pushToHeap(100);
-myHeap.print();
-console.log(myHeap.extractMax());
+myHeap.pushToHeap(5);
+// myHeap.print();
+myHeap.pushToHeap(3);
+// myHeap.print();
+myHeap.pushToHeap(6);
+// myHeap.print();
+myHeap.pushToHeap(3);
+// myHeap.print();
+myHeap.pushToHeap(2);
+// myHeap.print();
+myHeap.pushToHeap(1);
+// myHeap.print();
+myHeap.pushToHeap(7);
 myHeap.print();
